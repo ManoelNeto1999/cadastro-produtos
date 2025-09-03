@@ -1,5 +1,7 @@
 package com.manoel.cadastro_produtos.controller.dtos;
 
+import com.manoel.cadastro_produtos.model.entities.Categoria;
+
 import java.math.BigDecimal;
 
 public record DadosCadastroProduto(
@@ -7,5 +9,6 @@ public record DadosCadastroProduto(
         String nome,
         String descricao,
         BigDecimal preco,
-        Integer quantidade) {
+        Integer quantidade,
+        String nomeCategoria) {
 }

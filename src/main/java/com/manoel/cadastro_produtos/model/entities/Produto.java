@@ -25,14 +25,19 @@ public class Produto {
     private String descricao;
     private BigDecimal preco;
     private Integer quantidade;
+
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
     private Boolean ativo;
 
-    public Produto (DadosCadastroProduto dados) {
+    public Produto (DadosCadastroProduto dados, Categoria categoria) {
         this.codigo = dados.codigo();
         this.nome = dados.nome();
         this.descricao = dados.descricao();
         this.preco = dados.preco();
         this.quantidade = dados.quantidade();
+        this.categoria = categoria;
         this.ativo = true;
     }
 
