@@ -41,7 +41,7 @@ public class Produto {
         this.ativo = true;
     }
 
-    public void atualizar(DadosAtualizacaoProduto dados) {
+    public void atualizar(DadosAtualizacaoProduto dados, Categoria categoria) {
         if (dados.codigo() != null) {
             this.codigo = dados.codigo();
         }
@@ -56,6 +56,9 @@ public class Produto {
         }
         if (dados.quantidade() != null) {
             this.quantidade = dados.quantidade();
+        }
+        if (categoria != null) {
+            this.categoria = categoria;
         }
     }
 

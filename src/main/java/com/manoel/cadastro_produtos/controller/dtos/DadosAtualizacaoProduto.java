@@ -8,5 +8,7 @@ public record DadosAtualizacaoProduto(
         String nome,
         String descricao,
         BigDecimal preco,
-        Integer quantidade) {
+        Integer quantidade,
+        String nomeCategoria
+) {
 }

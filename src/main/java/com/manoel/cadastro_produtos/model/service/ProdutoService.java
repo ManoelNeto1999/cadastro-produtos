@@ -50,8 +50,10 @@ public class ProdutoService {
     }
 
     public DadosDetalhamentoProduto atualizar(DadosAtualizacaoProduto dados) {
+        var buscandoCategoria = categoriaRepository.findByNome(dados.nomeCategoria());
         var produto = produtoRepository.getReferenceById(dados.id());
-        produto.atualizar(dados);
+        Categoria categoria = buscandoCategoria.get();
+        produto.atualizar(dados, categoria);
 
         return new DadosDetalhamentoProduto(produto);
     }

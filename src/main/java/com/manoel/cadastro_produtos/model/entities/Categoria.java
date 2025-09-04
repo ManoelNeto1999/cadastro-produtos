@@ -1,5 +1,6 @@
 package com.manoel.cadastro_produtos.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.manoel.cadastro_produtos.controller.dtos.DadosAtualizacaoCategoria;
 import com.manoel.cadastro_produtos.controller.dtos.DadosCadastroCategoria;
 import jakarta.persistence.*;
@@ -23,12 +24,14 @@ public class Categoria {
     private String nome;
 
     @OneToMany(mappedBy = "categoria")
+    @JsonIgnore
     private List<Produto> produtos;
 
     private Boolean ativo;
 
     public Categoria(DadosCadastroCategoria dados) {
         this.nome = dados.nome();
+        this.ativo = true;
     }
 
     public void atualizar(DadosAtualizacaoCategoria dados) {

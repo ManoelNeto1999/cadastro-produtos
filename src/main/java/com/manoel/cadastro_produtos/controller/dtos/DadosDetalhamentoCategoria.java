@@ -9,4 +9,6 @@ public record DadosDetalhamentoCategoria(
     public DadosDetalhamentoCategoria(Categoria categoria) {
         this(categoria.getId(), categoria.getNome());
     }
+
+
 }
