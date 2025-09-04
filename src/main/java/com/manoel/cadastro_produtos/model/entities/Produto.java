@@ -1,7 +1,7 @@
 package com.manoel.cadastro_produtos.model.entities;
 
-import com.manoel.cadastro_produtos.controller.dtos.DadosAtualizacaoProduto;
-import com.manoel.cadastro_produtos.controller.dtos.DadosCadastroProduto;
+import com.manoel.cadastro_produtos.controller.dtos.produto.DadosAtualizacaoProduto;
+import com.manoel.cadastro_produtos.controller.dtos.produto.DadosCadastroProduto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -41,7 +41,7 @@ public class Produto {
         this.ativo = true;
     }
 
-    public void atualizar(DadosAtualizacaoProduto dados) {
+    public void atualizar(DadosAtualizacaoProduto dados, Categoria categoria) {
         if (dados.codigo() != null) {
             this.codigo = dados.codigo();
         }
@@ -56,6 +56,9 @@ public class Produto {
         }
         if (dados.quantidade() != null) {
             this.quantidade = dados.quantidade();
+        }
+        if (categoria != null) {
+            this.categoria = categoria;
         }
     }
 

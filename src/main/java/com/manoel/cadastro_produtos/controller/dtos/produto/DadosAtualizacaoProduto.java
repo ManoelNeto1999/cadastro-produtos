@@ -1,4 +1,4 @@
-package com.manoel.cadastro_produtos.controller.dtos;
+package com.manoel.cadastro_produtos.controller.dtos.produto;
 
 import java.math.BigDecimal;
 
@@ -8,5 +8,7 @@ public record DadosAtualizacaoProduto(
         String nome,
         String descricao,
         BigDecimal preco,
-        Integer quantidade) {
+        Integer quantidade,
+        String nomeCategoria
+) {
 }

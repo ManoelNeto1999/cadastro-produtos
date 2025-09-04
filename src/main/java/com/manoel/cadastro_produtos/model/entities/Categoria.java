@@ -1,7 +1,8 @@
 package com.manoel.cadastro_produtos.model.entities;
 
-import com.manoel.cadastro_produtos.controller.dtos.DadosAtualizacaoCategoria;
-import com.manoel.cadastro_produtos.controller.dtos.DadosCadastroCategoria;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.manoel.cadastro_produtos.controller.dtos.categoria.DadosAtualizacaoCategoria;
+import com.manoel.cadastro_produtos.controller.dtos.categoria.DadosCadastroCategoria;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -22,22 +23,27 @@ public class Categoria {
     private Long id;
     private String nome;
 
-    @OneToMany(mappedBy = "categoria")
+    @OneToMany(mappedBy = "categoria", cascade = CascadeType.REMOVE)
+    @JsonIgnore
     private List<Produto> produtos;
 
-    private Boolean ativo;
+    @ManyToOne
+    @JoinColumn(name = "setor_id")
+    private Setor setor;
 
-    public Categoria(DadosCadastroCategoria dados) {
+
+    public Categoria(DadosCadastroCategoria dados, Setor setor) {
         this.nome = dados.nome();
+        this.setor = setor;
     }
 
-    public void atualizar(DadosAtualizacaoCategoria dados) {
+    public void atualizar(DadosAtualizacaoCategoria dados, Setor setor) {
         if (dados.nome() != null) {
             this.nome = dados.nome();
         }
+        if (setor != null) {
+            this.setor = setor;
+        }
     }
 
-    public void excluir() {
-        this.ativo = false;
-    }
 }

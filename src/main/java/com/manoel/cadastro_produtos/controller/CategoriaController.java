@@ -1,8 +1,8 @@
 package com.manoel.cadastro_produtos.controller;
 
-import com.manoel.cadastro_produtos.controller.dtos.DadosAtualizacaoCategoria;
-import com.manoel.cadastro_produtos.controller.dtos.DadosCadastroCategoria;
-import com.manoel.cadastro_produtos.controller.dtos.DadosDetalhamentoCategoria;
+import com.manoel.cadastro_produtos.controller.dtos.categoria.DadosAtualizacaoCategoria;
+import com.manoel.cadastro_produtos.controller.dtos.categoria.DadosCadastroCategoria;
+import com.manoel.cadastro_produtos.controller.dtos.categoria.DadosDetalhamentoCategoria;
 import com.manoel.cadastro_produtos.model.service.CategoriaService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,8 @@
 package com.manoel.cadastro_produtos.model.service;
 
-import com.manoel.cadastro_produtos.controller.dtos.DadosAtualizacaoProduto;
-import com.manoel.cadastro_produtos.controller.dtos.DadosCadastroProduto;
-import com.manoel.cadastro_produtos.controller.dtos.DadosDetalhamentoProduto;
+import com.manoel.cadastro_produtos.controller.dtos.produto.DadosAtualizacaoProduto;
+import com.manoel.cadastro_produtos.controller.dtos.produto.DadosCadastroProduto;
+import com.manoel.cadastro_produtos.controller.dtos.produto.DadosDetalhamentoProduto;
 import com.manoel.cadastro_produtos.model.entities.Categoria;
 import com.manoel.cadastro_produtos.model.entities.Produto;
 import com.manoel.cadastro_produtos.model.repository.CategoriaRepository;
@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -50,8 +49,10 @@ public class ProdutoService {
     }
 
     public DadosDetalhamentoProduto atualizar(DadosAtualizacaoProduto dados) {
+        var buscandoCategoria = categoriaRepository.findByNome(dados.nomeCategoria());
         var produto = produtoRepository.getReferenceById(dados.id());
-        produto.atualizar(dados);
+        Categoria categoria = buscandoCategoria.get();
+        produto.atualizar(dados, categoria);
 
         return new DadosDetalhamentoProduto(produto);
     }

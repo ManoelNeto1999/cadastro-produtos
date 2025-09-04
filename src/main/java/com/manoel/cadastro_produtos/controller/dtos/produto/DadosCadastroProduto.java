@@ -1,6 +1,4 @@
-package com.manoel.cadastro_produtos.controller.dtos;
-
-import com.manoel.cadastro_produtos.model.entities.Categoria;
+package com.manoel.cadastro_produtos.controller.dtos.produto;
 
 import java.math.BigDecimal;
 
